@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>model_thumnail</title>
+</head>
+<body>
+    <h1>Video List</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Thumbnail</th>
+                <th>Created At</th>
+                <th>Updated At</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for video in videos %}
+            <tr>
+                <td>{{ video.title }}</td>
+                <td>{{ video.description }}</td>
+                <td>
+                    <img src="{{ video.thumbnail.url }}" alt="{{ video.title }}" width="150" />
+                </td>
+                <td>{{ video.created_at|date:"Y-m-d H:i:s" }}</td>
+                <td>{{ video.updated_at|date:"Y-m-d H:i:s" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
