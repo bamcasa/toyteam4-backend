@@ -16,6 +16,7 @@
                 <th>Thumbnail</th>
                 <th>Created At</th>
                 <th>Updated At</th>
+                <th>Video</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,11 @@
                 </td>
                 <td>{{ video.created_at|date:"Y-m-d H:i:s" }}</td>
                 <td>{{ video.updated_at|date:"Y-m-d H:i:s" }}</td>
+                <td>
+                    <iframe width="560" height="315" src={{video.video_url}} title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+                </td>
             </tr>
             {% endfor %}
         </tbody>
