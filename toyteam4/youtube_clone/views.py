@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from rest_framework import viewsets
 
 from .models import Video
 
 from .forms import ImageForm
+
+from .serializers import VideoSerializer
 
 # Create your views here.
 
@@ -31,3 +34,8 @@ def upload_video(request):
 def view_video(request, title):
     video = Video.objects.get(title=title)
     return render(request, 'view_video.html', {'video': video})
+
+
+class VideoViewSet(viewsets.ModelViewSet):
+    queryset = Video.objects.all()
+    serializer_class = VideoSerializer
