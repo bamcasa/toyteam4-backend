@@ -26,3 +26,8 @@ def upload_video(request):
     else:
         form = ImageForm()
     return render(request, 'upload.html', {'form': form})
+
+
+def view_video(request, title):
+    video = Video.objects.get(title=title)
+    return render(request, 'view_video.html', {'video': video})
