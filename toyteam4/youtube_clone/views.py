@@ -1,13 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.http import HttpResponse
+
 from rest_framework import viewsets
 
-from .models import Video
-
-from .forms import ImageForm
-
-from .serializers import VideoSerializer
-
+from .serializers import *
+from .models import User, Video, Recommended_Videos, Comment, Reply
 # Create your views here.
 
 
@@ -20,22 +17,22 @@ def test_video(request):
     return render(request, 'Videos.html', {'videos': videos})
 
 
-def upload_video(request):
-    if request.method == 'POST':
-        form = ImageForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('Videos')
-    else:
-        form = ImageForm()
-    return render(request, 'upload.html', {'form': form})
-
-
-def view_video(request, title):
-    video = Video.objects.get(title=title)
-    return render(request, 'view_video.html', {'video': video})
-
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = Video.objects.all()
+    serializer_class = UserSerializer
 
 class VideoViewSet(viewsets.ModelViewSet):
-    queryset = Video.objects.all()
+    queryset = User.objects.all()
     serializer_class = VideoSerializer
+
+class Recommended_VideosViewSet(viewsets.ModelViewSet):
+    queryset = Recommended_Videos.objects.all()
+    serializer_class = Recommended_VideoSerializer
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+
+class ReplyViewSet(viewsets.ModelViewSet):
+    queryset = Reply.objects.all()
+    serializer_class = ReplySerializer
