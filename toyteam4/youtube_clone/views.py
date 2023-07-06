@@ -18,11 +18,11 @@ def test_video(request):
 
 
 class UserViewSet(viewsets.ModelViewSet):
-    queryset = Video.objects.all()
+    queryset = User.objects.all()
     serializer_class = UserSerializer
 
 class VideoViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
+    queryset = Video.objects.all()
     serializer_class = VideoSerializer
 
 class Recommended_VideosViewSet(viewsets.ModelViewSet):
