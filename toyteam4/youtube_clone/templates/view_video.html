@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ video.title }}</title>
+</head>
+
+<body>
+    <h1>{{ video.title }}</h1>
+    <iframe width="560" height="315" src={{video.video_url}} title="YouTube video player" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    <p>{{ video.description }}</p>
+    <p>생성된 날짜: {{ video.created_at|date:"F d, Y" }}</p>
+    <p>수정된 날짜: {{ video.updated_at|date:"F d, Y" }}</p>
+
+</body>
+
+</html>
