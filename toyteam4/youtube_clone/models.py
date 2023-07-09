@@ -31,13 +31,10 @@ class Video(models.Model):
 
 
 class Recommended_Videos(models.Model):
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE)
-    selected_video = models.ForeignKey(
-        Video, on_delete=models.CASCADE)
-    # 여러가지 Video를 저장할 수 있도록 ManyToManyField로 설정
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # selected_video = models.ForeignKey(Video, on_delete=models.CASCADE)
     recommended_videos = models.ManyToManyField(
-        Video, related_name='recommended_videos')
+        Video, related_name='recommended_videos', blank=True, null=True)
 
 
 class Comment(models.Model):
