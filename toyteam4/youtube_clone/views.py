@@ -3,7 +3,7 @@ from django.http import HttpResponse
 
 from rest_framework import viewsets
 
-from .serializers import *
+from .serializers import UserSerializer, VideoSerializer, Recommended_VideoSerializer, CommentSerializer, ReplySerializer
 from .models import User, Video, Recommended_Videos, Comment, Reply
 # Create your views here.
 
