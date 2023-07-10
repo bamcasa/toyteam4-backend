@@ -40,9 +40,11 @@ class Comment(models.Model):
     video = models.ForeignKey(Video, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
+    like_num = models.IntegerField(verbose_name="좋아요 수", default=0)
 
 
 class Reply(models.Model):
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
+    like_num = models.IntegerField(verbose_name="좋아요 수", default=0)
