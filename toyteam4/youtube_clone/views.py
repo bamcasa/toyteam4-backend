@@ -3,8 +3,8 @@ from django.http import HttpResponse
 
 from rest_framework import viewsets
 
-from .serializers import UserSerializer, VideoSerializer, Recommended_VideoSerializer, CommentSerializer, ReplySerializer
-from .models import User, Video, Recommended_Videos, Comment, Reply
+from .serializers import UserSerializer, VideoSerializer,VideoSerializer, CommentSerializer, ReplySerializer
+from .models import User, Video, Comment, Reply
 # Create your views here.
 
 
@@ -24,10 +24,6 @@ class UserViewSet(viewsets.ModelViewSet):
 class VideoViewSet(viewsets.ModelViewSet):
     queryset = Video.objects.all()
     serializer_class = VideoSerializer
-
-class Recommended_VideosViewSet(viewsets.ModelViewSet):
-    queryset = Recommended_Videos.objects.all()
-    serializer_class = Recommended_VideoSerializer
 
 class CommentViewSet(viewsets.ModelViewSet):
     queryset = Comment.objects.all()

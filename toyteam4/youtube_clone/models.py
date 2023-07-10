@@ -25,15 +25,12 @@ class Video(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     view_count = models.IntegerField(verbose_name='조회수', default=0)
+    
+    recommended_Video = models.ForeignKey('self', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.title
 
-
-class Recommended_Videos(models.Model):
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, blank=True)
-    # video = models.ManyToManyField(Video)
 
 
 class Comment(models.Model):
