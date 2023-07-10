@@ -25,24 +25,28 @@ class Video(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     view_count = models.IntegerField(verbose_name='조회수', default=0)
+    
 
     def __str__(self):
         return self.title
 
 
 class Recommended_Videos(models.Model):
-    user = models.ForeignKey(
-        User, on_delete=models.CASCADE, null=True, blank=True)
-    # video = models.ManyToManyField(Video)
+    video = models.ForeignKey(Video, on_delete=models.CASCADE,related_name='original_videos' )
+    # selected_video = models.ForeignKey(Video, on_delete=models.CASCADE)
+    recommended_videos = models.ManyToManyField(
+        Video, related_name='recommended_videos')
 
 
 class Comment(models.Model):
     video = models.ForeignKey(Video, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
+    like_num = models.IntegerField(verbose_name="좋아요 수", default=0)
 
 
 class Reply(models.Model):
     comment = models.ForeignKey(Comment, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
+    like_num = models.IntegerField(verbose_name="좋아요 수", default=0)
