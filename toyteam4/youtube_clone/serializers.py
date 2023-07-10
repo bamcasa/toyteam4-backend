@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import  User, Video, Comment, Reply
+from .models import  User, Video, Recommended_Videos, Comment, Reply
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -12,6 +12,10 @@ class VideoSerializer(serializers.ModelSerializer):
         model = Video
         fields = '__all__'
 
+class Recommended_VideoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Recommended_Videos
+        fields = '__all__'
 
 class CommentSerializer(serializers.ModelSerializer):
     class Meta:
