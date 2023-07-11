@@ -33,7 +33,7 @@ class Recommended_VideosViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         video_id = self.request.query_params.get('video_id', None)
         if video_id is not None:
-            return Recommended_Videos.objects.filter(video__id=_id)
+            return Recommended_Videos.objects.filter(video__id=video_id)
         else:
             return Recommended_Videos.objects.none()
 
