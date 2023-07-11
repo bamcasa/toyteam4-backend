@@ -2,7 +2,9 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from .views import test, test_video
+
 from .views import VideoViewSet, UserViewSet, CommentViewSet, ReplyViewSet, Recommended_VideosViewSet
+
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -21,6 +23,8 @@ router.register(r'rdvideos', Recommended_VideosViewSet,
 urlpatterns = [
     path('test/', test, name='test'),
     path('Videos/', test_video, name='Videos'),
+    # path('upload/', upload_video, name='upload'),
+    # path('view_video/<str:title>/', view_video, name='view_video'),
     path('api/', include(router.urls)),
 ]
 

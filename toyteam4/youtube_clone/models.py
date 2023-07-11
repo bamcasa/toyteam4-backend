@@ -32,7 +32,8 @@ class Video(models.Model):
 
 
 class Recommended_Videos(models.Model):
-    video = models.ForeignKey(Video, on_delete=models.CASCADE,related_name='original_videos' )
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    #video = models.ForeignKey(Video, on_delete=models.CASCADE,related_name='original_videos' )
     # selected_video = models.ForeignKey(Video, on_delete=models.CASCADE)
     recommended_videos = models.ManyToManyField(
         Video, related_name='recommended_videos')
