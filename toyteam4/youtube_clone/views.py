@@ -31,9 +31,9 @@ class Recommended_VideosViewSet(viewsets.ModelViewSet):
     serializer_class = Recommended_VideoSerializer
 
     def get_queryset(self):
-        user_id = self.request.query_params.get('user_id', None)
-        if user_id is not None:
-            return Recommended_Videos.objects.filter(user__id=user_id)
+        video_id = self.request.query_params.get('video_id', None)
+        if video_id is not None:
+            return Recommended_Videos.objects.filter(video__id=_id)
         else:
             return Recommended_Videos.objects.none()
 
