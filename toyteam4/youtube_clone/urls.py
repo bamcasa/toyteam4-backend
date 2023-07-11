@@ -2,7 +2,9 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
 from .views import test, test_video
-from .views import *
+
+from .views import VideoViewSet, UserViewSet, CommentViewSet, ReplyViewSet, Recommended_VideosViewSet
+
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -15,6 +17,7 @@ router.register(r'comments', CommentViewSet)
 router.register(r'replies', ReplyViewSet)
 router.register(r'rdvideos', Recommended_VideosViewSet,
                 basename='recommended-videos')
+
 
 
 urlpatterns = [
