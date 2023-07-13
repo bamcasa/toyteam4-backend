@@ -1,7 +1,7 @@
 from django.db import models
+from django.contrib.auth import get_user_model
 
 # Create your models here.
-
 
 class User(models.Model):
     name = models.CharField(max_length=100)
@@ -39,6 +39,7 @@ class Recommended_Videos(models.Model):
 
 
 class Comment(models.Model):
+    name = models.CharField(max_length=100, default='' )
     video = models.ForeignKey(Video, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
